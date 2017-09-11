@@ -1,6 +1,5 @@
 --Link to the challenge: https://www.hackerrank.com/challenges/draw-the-triangle-1/problem
-
---SQL MS Server
+--Works for SQL MS Server
 
 WITH rows AS (        -- Create a table named rows
     SELECT 20 AS n    -- Create a row with column n and value of 20 
@@ -10,3 +9,26 @@ WITH rows AS (        -- Create a table named rows
 
 SELECT REPLICATE( '* ' , n )  -- Draw '* ' n times to create a triangle
 FROM rows                     -- using the table rows
+
+--Results:
+
+WITH rows AS (        -- Create a table named rows
+    SELECT 1 AS n    -- Create a row with column n and value of 1 
+    UNION ALL         -- Add the upper temporary table to table below
+    SELECT n+1 FROM rows WHERE n<10 -- Create 9 rows with values: 2, 3 .. 10
+)
+
+SELECT REPLICATE( '* ' , n )  -- Draw '* ' n times to create a triangle
+FROM rows  
+
+--Results:
+--* 
+--* * 
+--* * * 
+--* * * * 
+--* * * * * 
+--* * * * * * 
+--* * * * * * * 
+--* * * * * * * * 
+--* * * * * * * * * 
+--* * * * * * * * * * 

@@ -1,0 +1,6 @@
+--Problem: https://www.hackerrank.com/challenges/earnings-of-employees/problem
+--Select the maximum total salary and the number of employees who have earned this much so far
+
+SELECT MAX(salary*months), COUNT(employee_id)
+FROM Employee
+WHERE salary*months = (SELECT MAX(salary*months) FROM Employee);
